@@ -13,5 +13,21 @@ var romanToInt = function(s) {
         'M': 1000 
 };
 
+let result = 0;
+    
+for (let i = 0; i < s.length; i++) {
+    const currentValue = romanValues[s[i]];
+    const nextValue = romanValues[s[i + 1]];
+    
+    if (nextValue && nextValue > currentValue) {
+        result += nextValue - currentValue;
+        i++; // Skip the next character since it's already considered
+    } else {
+        result += currentValue;
+    }
+}
+
+return result;
+};
 
 module.exports={romanToInt}
